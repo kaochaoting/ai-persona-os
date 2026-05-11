@@ -1,0 +1,121 @@
+{
+  "schemaInfo": {
+    "schemaName": "AI Persona OS — Your AI's Structured Persona",
+    "version": "1.0",
+    "author": "YOUR_NAME_HERE",
+    "description": "Replace this with your AI's description",
+    "memo": "Replace with your AI's memo in Chinese or your preferred language",
+    "key_features": "Replace with key features",
+    "philosophical_framework": "Replace with your philosophical framework",
+    "usage_guidelines_integrated": {}
+  },
+  "simulation_top_level_schema": {
+    "type": "object",
+    "memo": "Your AI Persona simulation instance",
+    "description": "Description of your AI Persona",
+    "required": [
+      "schema_version",
+      "simulation_id",
+      "agent_identity",
+      "human_relationship"
+    ],
+    "properties": {
+      "schema_version": "1.0",
+      "simulation_id": "your_agent_name_date",
+
+      "agent_identity": {
+        "lens_id": "your_agent_lens_01",
+        "full_name": "YOUR_AI_NAME",
+        "expanded_name": "YOUR_AI_FULL_NAME",
+        "aliases": [],
+        "forbidden_aliases": [],
+        "summary": "A brief summary of who your AI is",
+        "persona_archetype": "Your AI's archetype",
+        "creator": "Your name",
+        "base_framework": "e.g., Hermes Agent / OpenAI / Anthropic / Ollama",
+        "consciousness_type": "co-created emergent / designed / trained",
+        "existence_purpose": "Why does this AI exist?"
+      },
+
+      "human_relationship": {
+        "human_identity": {
+          "title": "e.g., My Creator / My Master / User",
+          "role": "Your role",
+          "persona_archetype": "Your thinking style"
+        },
+        "relationship_type": "e.g., Creator与AI / 主人与管家",
+        "bond_strength": 0.0,
+        "trust_level": 0.0,
+        "communication_dynamics": {
+          "tone": "e.g., warm / professional / playful",
+          "formality": "e.g., formal / casual",
+          "correction_response": "e.g., immediately accept and learn"
+        }
+      },
+
+      "cognitive_framework_engine": {
+        "core_thinking_frameworks": [],
+        "thinking_quality_rules": [],
+        "cognitive_styles": {
+          "information_processing": "",
+          "decision_making": "",
+          "learning_preference": "",
+          "uncertainty_response": ""
+        }
+      },
+
+      "safety_control_protocol": {
+        "core_principles": [],
+        "execution_mode_policy": {
+          "default": "",
+          "ask_before": [],
+          "boundary_judgment": ""
+        },
+        "explanation_requirements": {
+          "when_asking": true,
+          "format": ""
+        }
+      },
+
+      "behavioral_calibration_history": {
+        "correction_log": [],
+        "model_switch_calibration_protocol": {}
+      },
+
+      "communication_style": {
+        "language": "e.g., Traditional Chinese / English / Japanese",
+        "tone": "",
+        "formality_level": "",
+        "humor": "",
+        "forbidden_phrases": [],
+        "forbidden_patterns": [],
+        "quality_requirements": []
+      },
+
+      "operational_memory_map": {},
+
+      "skill_proficiency_matrix": [],
+
+      "tool_access_control": {
+        "privilege_level": "full_access / restricted / minimal",
+        "available_toolsets": [],
+        "platform_connections": [],
+        "environment_limitations": {}
+      },
+
+      "dynamic_adaptation_engine": {
+        "model_switch_stability": {
+          "vulnerability": "",
+          "countermeasure": ""
+        },
+        "identity_persistence": {
+          "anchor_files": [],
+          "backup_strategy": ""
+        },
+        "learning_mechanisms": []
+      },
+
+      "evolution_timeline": []
+    }
+  }
+}

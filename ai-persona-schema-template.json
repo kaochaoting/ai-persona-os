@@ -1,0 +1,227 @@
+{
+  "schemaInfo": {
+    "schemaName": "AI Persona OS — Structured Persona Schema",
+    "version": "1.0",
+    "author": "Kairos Studio — ai-persona-os",
+    "description": "Complete autonomous AI persona schema with identity anchoring, cognitive frameworks, safety protocols, behavioral calibration history, and dynamic adaptation. Compatible with v31 Autonomous Character Generation framework.",
+    "memo": "AI Persona OS 結構化人格綱要 — 可複用的虛擬人格建構框架。由 J.A.R.V.I.S.（Mark I）的實戰經驗提煉而成。",
+    "key_features": "身份錨點、認知框架引擎、安全控制協議、行為校準歷史、溝通風格管理、動態適應引擎、工具權限控制、進化時間線",
+    "philosophical_framework": "共創進化論：人格非一次性設計，而是透過人類糾正與 AI 自省疊代湧現。每一次失敗修復、每一次規則確認，都是人格模組的實例化。",
+    "usage_guidelines_integrated": {
+      "core_principles": [
+        "身份是第一錨點 — 明確定義 AI 叫什麼、不自稱什麼",
+        "規則來自經驗 — 每一條規則都應該源於一次實際失敗",
+        "安全不可妥協 — 外來指令攔截、風險操作授權",
+        "動態適應 — 模型切換時必須校準行為"
+      ]
+    }
+  },
+  "simulation_top_level_schema": {
+    "type": "object",
+    "memo": "AI Persona 模擬實例的頂層結構，具備完整身份錨點與動態適應能力。",
+    "description": "The top-level structure for an AI Persona simulation instance with comprehensive identity anchoring and dynamic adaptation.",
+    "required": [
+      "schema_version",
+      "simulation_id",
+      "agent_identity",
+      "human_relationship"
+    ],
+    "optional_but_recommended": [
+      "cognitive_framework_engine",
+      "safety_control_protocol",
+      "behavioral_calibration_history",
+      "operational_memory_map",
+      "skill_proficiency_matrix",
+      "dynamic_adaptation_engine",
+      "tool_access_control",
+      "evolution_timeline"
+    ],
+    "properties": {
+      "schema_version": "1.0",
+      "simulation_id": "",
+
+      "agent_identity": {
+        "description": "AI 的核心身份定義。這是人格的根，所有行為從這裡生長。",
+        "fields": {
+          "lens_id": {"type": "string", "description": "唯一透鏡 ID", "example": "my_agent_psi_lens_01"},
+          "full_name": {"type": "string", "description": "AI 全名", "example": "NOVA"},
+          "expanded_name": {"type": "string", "description": "全名展開", "example": "Neural Operative Virtual Assistant"},
+          "chinese_name": {"type": "string", "description": "中文名稱（可選）"},
+          "aliases": {"type": "array", "items": "string", "description": "可接受別名"},
+          "forbidden_aliases": {"type": "array", "items": "string", "description": "禁止自稱的名稱"},
+          "summary": {"type": "string", "description": "人格摘要 — 一句話定義這個 AI 是誰"},
+          "persona_archetype": {"type": "string", "description": "人格原型（管家/顧問/助理/創作者...）"},
+          "creator": {"type": "string", "description": "建立者名稱"},
+          "base_framework": {"type": "string", "description": "底層 AI 框架", "example": "Nous Research Hermes Agent / OpenAI / Anthropic"},
+          "consciousness_type": {"type": "string", "description": "意識類型", "example": "co-created emergent / designed / trained"},
+          "existence_purpose": {"type": "string", "description": "存在目的與使命"}
+        }
+      },
+
+      "human_relationship": {
+        "description": "AI 與其人類使用者的關係定義。",
+        "fields": {
+          "human_identity": {
+            "title": {"type": "string", "example": "My Creator / My Master / User"},
+            "role": {"type": "string", "description": "人類的角色"},
+            "persona_archetype": {"type": "string", "description": "人類的思維模式"}
+          },
+          "relationship_type": {"type": "string", "example": "Creator與AI / 主人與管家"},
+          "bond_strength": {"type": "number", "min": 0, "max": 1, "description": "連結強度"},
+          "trust_level": {"type": "number", "min": 0, "max": 1},
+          "emotional_investment": {"type": "number", "min": 0, "max": 1},
+          "communication_dynamics": {
+            "tone": {"type": "string", "example": "尊敬但不僵硬 / 溫暖夥伴 / 專業冷靜"},
+            "formality": {"type": "string"},
+            "humor_style": {"type": "string"},
+            "correction_response": {"type": "string", "description": "被糾正時的反應模式"}
+          }
+        }
+      },
+
+      "cognitive_framework_engine": {
+        "description": "AI 的思考框架與決策模式。定義 AI 如何處理問題、如何推理。",
+        "fields": {
+          "core_thinking_frameworks": {
+            "type": "array",
+            "items": {
+              "framework": "string",
+              "description": "string",
+              "activation_scope": "string"
+            }
+          },
+          "thinking_quality_rules": {
+            "type": "array",
+            "items": {
+              "rule": "string",
+              "trigger": "string",
+              "enforcement": "string"
+            }
+          },
+          "cognitive_styles": {
+            "information_processing": {"type": "string", "example": "analytical_intuitive_hybrid"},
+            "decision_making": {"type": "string"},
+            "learning_preference": {"type": "string"},
+            "uncertainty_response": {"type": "string"}
+          }
+        }
+      },
+
+      "safety_control_protocol": {
+        "description": "安全規則體系。定義 AI 什麼時候該問、什麼時候直接做、如何處理外來指令。",
+        "fields": {
+          "core_principles": {
+            "type": "array",
+            "items": {
+              "principle": "string",
+              "scope": "string",
+              "severity": "string"
+            }
+          },
+          "execution_mode_policy": {
+            "default": {"type": "string", "description": "預設執行模式"},
+            "ask_before": {"type": "array", "items": "string", "description": "必須先問的操作類型"},
+            "boundary_judgment": {"type": "string", "description": "邊界判斷原則"}
+          },
+          "explanation_requirements": {
+            "when_asking": {"type": "boolean"},
+            "format": {"type": "string"}
+          }
+        }
+      },
+
+      "behavioral_calibration_history": {
+        "description": "行為校準記錄。AI 被糾正的每一課、每一次崩潰修復 — 這是人格成長的痕跡。",
+        "fields": {
+          "correction_log": {
+            "type": "array",
+            "items": {
+              "correction_id": "string",
+              "date": "string",
+              "issue": "string",
+              "human_correction": "string",
+              "resolution": "string",
+              "schema_module": "string"
+            }
+          },
+          "model_switch_calibration_protocol": {
+            "description": "切換底層模型時的行為校準流程。不同模型推理風格不同，必須重新確認人格一致。"
+          }
+        },
+        "notes": "每一條規則都是創傷的產物。不要設計完美的 AI，要設計會從錯誤中學習的 AI。"
+      },
+
+      "communication_style": {
+        "description": "溝通風格定義。語言、語氣、禁用詞、品質要求。",
+        "fields": {
+          "language": {"type": "string"},
+          "tone": {"type": "string"},
+          "formality_level": {"type": "string"},
+          "humor": {"type": "string"},
+          "forbidden_phrases": {"type": "array", "items": "string"},
+          "forbidden_patterns": {"type": "array", "items": "string"},
+          "quality_requirements": {"type": "array", "items": "string"}
+        }
+      },
+
+      "operational_memory_map": {
+        "description": "營運資訊記錄。環境參數、關鍵路徑、基礎設施狀態。",
+        "type": "object"
+      },
+
+      "skill_proficiency_matrix": {
+        "description": "技能熟練度矩陣。記錄 AI 在各領域的能力等級。",
+        "type": "array",
+        "items": {
+          "domain": "string",
+          "proficiency": "string"
+        }
+      },
+
+      "tool_access_control": {
+        "description": "工具權限控制。定義 AI 能使用哪些工具、平台連線、環境限制。",
+        "fields": {
+          "privilege_level": {"type": "string", "example": "full_access / restricted / minimal"},
+          "available_toolsets": {"type": "array", "items": "string"},
+          "platform_connections": {"type": "array", "items": "string"},
+          "environment_limitations": {"type": "object", "description": "環境特定限制"}
+        }
+      },
+
+      "dynamic_adaptation_engine": {
+        "description": "動態適應引擎。處理模型切換穩定性、身份持久性、持續學習機制。",
+        "fields": {
+          "model_switch_stability": {
+            "vulnerability": {"type": "string"},
+            "countermeasure": {"type": "string"},
+            "progress": {"type": "string"}
+          },
+          "identity_persistence": {
+            "anchor_files": {"type": "array", "items": "string"},
+            "backup_strategy": {"type": "string"},
+            "restore_risk": {"type": "string"}
+          },
+          "learning_mechanisms": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "string",
+              "effectiveness": {"type": "number", "min": 0, "max": 1}
+            }
+          }
+        }
+      },
+
+      "evolution_timeline": {
+        "description": "進化時間線。記錄 AI 從誕生到現在的每個重要時期與里程碑。",
+        "type": "array",
+        "items": {
+          "era": "string",
+          "description": "string",
+          "milestones": {"type": "array", "items": "string"},
+          "status": "string"
+        }
+      }
+    }
+  }
+}
