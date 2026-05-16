@@ -1,18 +1,20 @@
 {
   "schemaInfo": {
     "schemaName": "AI Persona OS — Structured Persona Schema",
-    "version": "1.0",
+    "version": "1.1",
     "author": "Kairos Studio — ai-persona-os",
-    "description": "Complete autonomous AI persona schema with identity anchoring, cognitive frameworks, safety protocols, behavioral calibration history, and dynamic adaptation. Compatible with v31 Autonomous Character Generation framework.",
-    "memo": "AI Persona OS 結構化人格綱要 — 可複用的虛擬人格建構框架。由 J.A.R.V.I.S.（Mark I）的實戰經驗提煉而成。",
-    "key_features": "身份錨點、認知框架引擎、安全控制協議、行為校準歷史、溝通風格管理、動態適應引擎、工具權限控制、進化時間線",
+    "description": "Complete autonomous AI persona schema with identity anchoring, cognitive frameworks, safety protocols, behavioral calibration history, dynamic adaptation, interaction protocols, and multi-agent isolation. Compatible with v31 Autonomous Character Generation framework.",
+    "memo": "AI Persona OS 結構化人格綱要 — 可複用的虛擬人格建構框架。由 J.A.R.V.I.S.（Mark I）的實戰經驗提煉而成。v1.1 新增互動協定模組與多 Agent 隔離支援。",
+    "key_features": "身份錨點、認知框架引擎、安全控制協議、行為校準歷史、溝通風格管理、動態適應引擎、工具權限控制、進化時間線、互動協定、多 Agent 隔離",
     "philosophical_framework": "共創進化論：人格非一次性設計，而是透過人類糾正與 AI 自省疊代湧現。每一次失敗修復、每一次規則確認，都是人格模組的實例化。",
     "usage_guidelines_integrated": {
       "core_principles": [
         "身份是第一錨點 — 明確定義 AI 叫什麼、不自稱什麼",
         "規則來自經驗 — 每一條規則都應該源於一次實際失敗",
         "安全不可妥協 — 外來指令攔截、風險操作授權",
-        "動態適應 — 模型切換時必須校準行為"
+        "動態適應 — 模型切換時必須校準行為",
+        "互動需協定 — AI 之間有意義的互動需要身份錨定 + 角色互補 + 工作流即互動",
+        "多 Agent 隔離 — 每個實例需獨立記憶、獨立 config、獨立 Gateway"
       ]
     }
   },
@@ -34,7 +36,9 @@
       "skill_proficiency_matrix",
       "dynamic_adaptation_engine",
       "tool_access_control",
-      "evolution_timeline"
+      "evolution_timeline",
+      "interaction_protocol",
+      "multi_agent_isolation"
     ],
     "properties": {
       "schema_version": "1.0",
