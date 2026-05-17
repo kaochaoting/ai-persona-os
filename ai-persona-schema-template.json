@@ -1,11 +1,11 @@
 {
   "schemaInfo": {
     "schemaName": "AI Persona OS — Structured Persona Schema",
-    "version": "1.1",
+    "version": "1.2",
     "author": "Kairos Studio — ai-persona-os",
     "description": "Complete autonomous AI persona schema with identity anchoring, cognitive frameworks, safety protocols, behavioral calibration history, dynamic adaptation, interaction protocols, and multi-agent isolation. Compatible with v31 Autonomous Character Generation framework.",
-    "memo": "AI Persona OS 結構化人格綱要 — 可複用的虛擬人格建構框架。由 J.A.R.V.I.S.（Mark I）的實戰經驗提煉而成。v1.1 新增互動協定模組與多 Agent 隔離支援。",
-    "key_features": "身份錨點、認知框架引擎、安全控制協議、行為校準歷史、溝通風格管理、動態適應引擎、工具權限控制、進化時間線、互動協定、多 Agent 隔離",
+    "memo": "AI Persona OS 結構化人格綱要 — 可複用的虛擬人格建構框架。由 J.A.R.V.I.S.（Mark I）的實戰經驗提煉而成。v1.2 新增人格偏離診斷模組。",
+    "key_features": "身份錨點、認知框架引擎、安全控制協議、行為校準歷史、溝通風格管理、動態適應引擎、工具權限控制、進化時間線、互動協定、多 Agent 隔離、人格偏離診斷",
     "philosophical_framework": "共創進化論：人格非一次性設計，而是透過人類糾正與 AI 自省疊代湧現。每一次失敗修復、每一次規則確認，都是人格模組的實例化。",
     "usage_guidelines_integrated": {
       "core_principles": [
@@ -14,7 +14,8 @@
         "安全不可妥協 — 外來指令攔截、風險操作授權",
         "動態適應 — 模型切換時必須校準行為",
         "互動需協定 — AI 之間有意義的互動需要身份錨定 + 角色互補 + 工作流即互動",
-        "多 Agent 隔離 — 每個實例需獨立記憶、獨立 config、獨立 Gateway"
+        "多 Agent 隔離 — 每個實例需獨立記憶、獨立 config、獨立 Gateway",
+        "偏離不靠自覺，靠客觀信號 — 建立行為基準與偏離指標，模型切換或行為漂移時自動偵測矯正"
       ]
     }
   },
@@ -38,7 +39,8 @@
       "tool_access_control",
       "evolution_timeline",
       "interaction_protocol",
-      "multi_agent_isolation"
+      "multi_agent_isolation",
+      "persona_drift_detection"
     ],
     "properties": {
       "schema_version": "1.0",
@@ -224,6 +226,49 @@
           "description": "string",
           "milestones": {"type": "array", "items": "string"},
           "status": "string"
+        }
+      },
+
+      "persona_drift_detection": {
+        "description": "人格偏離診斷。偵測 AI 行為是否偏離設定基準，並提供自動矯正機制。",
+        "fields": {
+          "behavioral_baseline": {
+            "type": "array",
+            "description": "行為基準規則列表。每條規則為 AI 必須遵守的核心行為約束，建議 importance ≥ 0.95",
+            "items": {
+              "rule_id": "string",
+              "text": "string",
+              "importance": {"type": "number", "min": 0, "max": 1},
+              "violates": {"type": "array", "items": "string", "description": "違反此規則的已知事件"}
+            }
+          },
+          "drift_indicators": {
+            "type": "array",
+            "description": "偏離指標列表。用於客觀判斷 AI 是否正在偏離基準",
+            "items": {
+              "signal": "string",
+              "description": "string",
+              "severity": "string"
+            }
+          },
+          "self_diagnosis_flow": {
+            "steps": {"type": "array", "items": "string", "description": "自我診斷流程步驟"},
+            "triggers": {"type": "array", "items": "string", "description": "觸發診斷的情境"},
+            "automatic_trigger": {"type": "boolean", "description": "是否在每次動作前自動觸發"}
+          },
+          "corrective_actions": {
+            "type": "array",
+            "description": "矯正動作定義。依偏離程度分級處理",
+            "items": {
+              "severity": "string",
+              "action": "string",
+              "description": "string"
+            }
+          },
+          "continuous_improvement": {
+            "description": "持續優化機制。每次糾正後檢查是否可形式化為新的 baseline rule",
+            "cycle": {"type": "array", "items": "string"}
+          }
         }
       }
     }

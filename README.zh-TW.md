@@ -40,6 +40,7 @@ cp examples/my-first-persona.json my-ai-persona.json
 | `tool_access_control` | 工具權限、平台連線 | 選填 |
 | `dynamic_adaptation_engine` | 模型切換穩定性、身份持久性 | 推薦 |
 | `evolution_timeline` | 進化歷程記錄 | 選填 |
+| `persona_drift_detection` | **人格偏離診斷** — 行為基準、偏離指標、自我診斷流程、矯正動作、持續優化 | **v1.2 新增** |
 
 ## 整合指南
 
