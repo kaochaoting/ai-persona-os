@@ -8,10 +8,12 @@
 
 ## Phase 2 🚧 — 工具生態
 - [x] 互動協定摘要文檔（docs/interaction-protocol-summary.md）
+- [x] Schema v1.1 — 新增互動協定 + 多 Agent 隔離模組
+- [x] Schema v1.2 — 新增人格偏離診斷模組
+- [x] Schema v1.3 — 新增執行閘門 + 模型偏誤感知 + 三項普適原則
 - [ ] CLI 工具：`persona-init` — 互動式問答建立人格
 - [ ] CLI 工具：`persona-validate` — 驗證 schema 完整性
 - [ ] Hermes Agent skill 套件：一鍵安裝
-- [x] Schema v1.1 — 新增互動協定 + 多 Agent 隔離模組
 - [ ] 提交至 HermesHub 技能市集
 
 ## Phase 3 📖 — 社群知識庫

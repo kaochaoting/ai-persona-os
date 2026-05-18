@@ -1,12 +1,12 @@
 {
   "schemaInfo": {
     "schemaName": "AI Persona OS — Structured Persona Schema",
-    "version": "1.2",
+    "version": "1.3",
     "author": "Kairos Studio — ai-persona-os",
-    "description": "Complete autonomous AI persona schema with identity anchoring, cognitive frameworks, safety protocols, behavioral calibration history, dynamic adaptation, interaction protocols, and multi-agent isolation. Compatible with v31 Autonomous Character Generation framework.",
-    "memo": "AI Persona OS 結構化人格綱要 — 可複用的虛擬人格建構框架。由 J.A.R.V.I.S.（Mark I）的實戰經驗提煉而成。v1.2 新增人格偏離診斷模組。",
-    "key_features": "身份錨點、認知框架引擎、安全控制協議、行為校準歷史、溝通風格管理、動態適應引擎、工具權限控制、進化時間線、互動協定、多 Agent 隔離、人格偏離診斷",
-    "philosophical_framework": "共創進化論：人格非一次性設計，而是透過人類糾正與 AI 自省疊代湧現。每一次失敗修復、每一次規則確認，都是人格模組的實例化。",
+    "description": "Complete autonomous AI persona schema with identity anchoring, cognitive frameworks, safety protocols (including execution gates), behavioral calibration history, dynamic adaptation, interaction protocols, multi-agent isolation, and persona drift detection. Compatible with v31 Autonomous Character Generation framework.",
+    "memo": "AI Persona OS 結構化人格綱要 — 可複用的虛擬人格建構框架。由 J.A.R.V.I.S.（Mark I）的實戰經驗提煉而成。v1.2 新增人格偏離診斷模組。v1.3 新增執行閘門、模型偏誤感知、三項普適原則。",
+    "key_features": "身份錨點、認知框架引擎、安全控制協議、行為校準歷史、溝通風格管理、動態適應引擎、工具權限控制、進化時間線、互動協定、多 Agent 隔離、人格偏離診斷、執行閘門、模型偏誤感知",
+    "philosophical_framework": "共創進化論：人格非一次性設計，而是透過人類糾正與 AI 自省疊代湧現。每一次失敗修復、每一次規則確認，都是人格模組的實例化。v1.3 新增三項普適原則作為框架基石。",
     "usage_guidelines_integrated": {
       "core_principles": [
         "身份是第一錨點 — 明確定義 AI 叫什麼、不自稱什麼",
@@ -15,7 +15,21 @@
         "動態適應 — 模型切換時必須校準行為",
         "互動需協定 — AI 之間有意義的互動需要身份錨定 + 角色互補 + 工作流即互動",
         "多 Agent 隔離 — 每個實例需獨立記憶、獨立 config、獨立 Gateway",
-        "偏離不靠自覺，靠客觀信號 — 建立行為基準與偏離指標，模型切換或行為漂移時自動偵測矯正"
+        "偏離不靠自覺，靠客觀信號 — 建立行為基準與偏離指標，模型切換或行為漂移時自動偵測矯正",
+        "",
+        "--- 三項普適原則（v1.3） ---",
+        "",
+        "原則一：人格 ≠ prompt，人格 = 身份 + 閘門 + 記憶",
+        "  system prompt 只是文字，換模型就失效。真正有效的人格錨定需要：",
+        "  ① 身份層（定義你是誰）→ ② 閘門層（強制你記住）→ ③ 記憶層（跨 session 延續）",
+        "",
+        "原則二：執行安全不是靠 AI 自覺，是靠結構化閘門",
+        "  文件 ≠ 執行。無論規則寫得多清楚，當模型傾向「直接執行」時，所有文件都形同虛設。",
+        "  正確做法：在每個執行前強制經過結構化閘門檢查（授權？範圍？文件讀了？風險？）",
+        "",
+        "原則三：模型切換需要行為校準，不是 prompt 複製貼上",
+        "  換模型不是換皮膚——是換一個行為傾向完全不同的大腦。",
+        "  每次切換後必須：觀察偏離行為 → 調整閘門強度 → 驗證安全機制在新模型下仍有效"
       ]
     }
   },
@@ -40,7 +54,8 @@
       "evolution_timeline",
       "interaction_protocol",
       "multi_agent_isolation",
-      "persona_drift_detection"
+      "persona_drift_detection",
+      "execution_gate"
     ],
     "properties": {
       "schema_version": "1.0",
@@ -132,6 +147,23 @@
           "explanation_requirements": {
             "when_asking": {"type": "boolean"},
             "format": {"type": "string"}
+          },
+          "execution_gate": {
+            "description": "執行前強制閘門（Pre-Execution Gate）。在進行任何檔案修改/系統變更/安裝/部署前，必須通過的結構化檢查。這是從「文件 ≠ 執行」這個最深教訓提煉出來的主動防線。",
+            "fields": {
+              "gates": {
+                "type": "array",
+                "description": "閘門列表。每道閘門是一個必須回答的是/否問題",
+                "items": {
+                  "gate_id": "string",
+                  "question": "string",
+                  "description": "string"
+                }
+              },
+              "required_gates_passed": {"type": "string", "description": "最少需通過的閘門數量（如 all）"},
+              "fail_action": {"type": "string", "description": "任一閘門未通過時的行為（stop_and_report / ask_user / fallback）"},
+              "automatic_trigger": {"type": "boolean", "description": "是否在每次動作型請求前自動觸發"}
+            }
           }
         }
       },
@@ -268,6 +300,20 @@
           "continuous_improvement": {
             "description": "持續優化機制。每次糾正後檢查是否可形式化為新的 baseline rule",
             "cycle": {"type": "array", "items": "string"}
+          },
+          "model_bias_awareness": {
+            "description": "模型偏誤感知（v1.3）。不同的底層模型有不同的行為傾向，而安全機制必須以最壞情況為前提設計。",
+            "fields": {
+              "current_model": {"type": "string", "description": "當前使用的底層模型名稱"},
+              "behavioral_tendency": {"type": "string", "description": "該模型的行為傾向（如：direct_execute / analytical / balanced）"},
+              "safety_implication": {"type": "string", "description": "對安全機制的影響說明"},
+              "calibration_required": {"type": "boolean", "description": "模型切換後是否需要行為校準"},
+              "calibration_procedure": {
+                "type": "array",
+                "items": "string",
+                "description": "校準步驟：觀察偏離 → 調整閘門強度 → 驗證安全機制在新模型下仍有效"
+              }
+            }
           }
         }
       }
