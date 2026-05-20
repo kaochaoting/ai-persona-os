@@ -11,6 +11,8 @@
 - [x] Schema v1.1 — 新增互動協定 + 多 Agent 隔離模組
 - [x] Schema v1.2 — 新增人格偏離診斷模組
 - [x] Schema v1.3 — 新增執行閘門 + 模型偏誤感知 + 三項普適原則
+- [x] Schema v1.4 — 新增雙層監控系統 (Session 啟動自檢 + 每日深度診斷 Cron)
+- [x] 人格偏離監控基礎設施 (persona-drift-check.sh + drift-log.json 趨勢追蹤)
 - [ ] CLI 工具：`persona-init` — 互動式問答建立人格
 - [ ] CLI 工具：`persona-validate` — 驗證 schema 完整性
 - [ ] Hermes Agent skill 套件：一鍵安裝
